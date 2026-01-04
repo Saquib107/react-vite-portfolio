@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./Navbar.css";
 
 export default function Navbar() {
     const navRef = useRef(null);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         gsap.fromTo(
@@ -17,11 +18,29 @@ export default function Navbar() {
         <nav ref={navRef} className="glass-nav">
             <div className="nav-logo">MY PORTFOLIO</div>
 
-            <ul className="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact" className="nav-btn">Contact</a></li>
+            {/* Hamburger (mobile only via CSS) */}
+            <div
+                className={`hamburger ${menuOpen ? "active" : ""}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
+                <li><a onClick={() => setMenuOpen(false)} href="#hero">Home</a></li>
+                <li><a onClick={() => setMenuOpen(false)} href="#about">About</a></li>
+                <li><a onClick={() => setMenuOpen(false)} href="#projects">Projects</a></li>
+                <li>
+                    <a
+                        onClick={() => setMenuOpen(false)}
+                        href="#contact"
+                        className="nav-btn"
+                    >
+                        Contact
+                    </a>
+                </li>
             </ul>
         </nav>
     );
