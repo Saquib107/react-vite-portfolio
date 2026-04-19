@@ -24,9 +24,8 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 w-full z-100 transition-all duration-500 py-6 px-10 md:px-24 flex items-center justify-between ${
-        isScrolled ? "bg-bg-black/80 backdrop-blur-xl py-4" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 w-full z-100 transition-all duration-500 py-6 px-10 md:px-24 flex items-center justify-between ${isScrolled ? "bg-bg-black/80 backdrop-blur-xl py-4" : "bg-transparent"
+        }`}
     >
       <div className="flex items-center gap-2">
         <span className="text-accent-gold font-heading text-2xl tracking-tighter">S.</span>
@@ -50,16 +49,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
-        <button 
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          className="relative w-12 h-6 rounded-full border border-primary-beige/20 flex items-center px-1 overflow-hidden group"
-        >
-          <motion.div 
-            animate={{ x: isDarkMode ? 24 : 0 }}
-            className="w-4 h-4 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(212,163,115,0.5)]"
-          />
-        </button>
       </div>
     </motion.nav>
   );
