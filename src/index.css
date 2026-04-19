@@ -1,10 +1,40 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
+@theme {
+  --color-bg-black: #0a0a0a;
+  --color-primary-beige: #f5e6d3;
+  --color-accent-gold: #d4a373;
+  --font-heading: "Anton", "Bebas Neue", sans-serif;
+  --font-body: "Inter", "Poppins", sans-serif;
+  --font-accent: "Dancing Script", cursive;
 }
 
-body {
-  background: black;
-  color: white;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-bg-black);
+    color: var(--color-primary-beige);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+  }
+}
+
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: 100vh;
 }

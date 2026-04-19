@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import TableOfContents from './components/TableOfContents';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -20,17 +21,16 @@ function App() {
       {isLoading && <Preloader onComplete={handleLoadingComplete} />}
 
       {!isLoading && (
-        <>
+        <div className="snap-container">
           <Navbar />
-          <main>
-            <Hero />
-            <About />
-            <Projects />
-            <Contact />
-          </main>
+          <Hero />
+          <section className="snap-section"><TableOfContents /></section>
+          <About />
+          <Projects />
+          <Contact />
           <Footer />
           <Toaster />
-        </>
+        </div>
       )}
     </div>
   );

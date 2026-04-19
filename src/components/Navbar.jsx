@@ -1,47 +1,68 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import "./Navbar.css";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
-    const navRef = useRef(null);
-    const [menuOpen, setMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-    useEffect(() => {
-        gsap.fromTo(
-            navRef.current,
-            { y: -60, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-        );
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-        <nav ref={navRef} className="glass-nav">
-            <div className="nav-logo">MY PORTFOLIO</div>
+  const navLinks = [
+    { name: "Home", id: "hero" },
+    { name: "About", id: "about" },
+    { name: "Projects", id: "projects" },
+    { name: "Contact", id: "contact" },
+  ];
 
-            {/* Hamburger (mobile only via CSS) */}
-            <div
-                className={`hamburger ${menuOpen ? "active" : ""}`}
-                onClick={() => setMenuOpen(!menuOpen)}
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  return (
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 w-full z-100 transition-all duration-500 py-6 px-10 md:px-24 flex items-center justify-between ${
+        isScrolled ? "bg-bg-black/80 backdrop-blur-xl py-4" : "bg-transparent"
+      }`}
+    >
+      <div className="flex items-center gap-2">
+        <span className="text-accent-gold font-heading text-2xl tracking-tighter">S.</span>
+        <span className="text-primary-beige font-body text-[10px] uppercase tracking-[0.4em] hidden md:block">Saquib Portfolio</span>
+      </div>
 
-            <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-                <li><a onClick={() => setMenuOpen(false)} href="#hero">Home</a></li>
-                <li><a onClick={() => setMenuOpen(false)} href="#about">About</a></li>
-                <li><a onClick={() => setMenuOpen(false)} href="#projects">Projects</a></li>
-                <li>
-                    <a
-                        onClick={() => setMenuOpen(false)}
-                        href="#contact"
-                        className="nav-btn"
-                    >
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    );
-}
+      <div className="flex items-center gap-12">
+        <ul className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                className="text-primary-beige/50 font-body text-[10px] uppercase tracking-widest hover:text-accent-gold transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <button 
+          onClick={() => setIsDarkMode(!isDarkMode)}
+          className="relative w-12 h-6 rounded-full border border-primary-beige/20 flex items-center px-1 overflow-hidden group"
+        >
+          <motion.div 
+            animate={{ x: isDarkMode ? 24 : 0 }}
+            className="w-4 h-4 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(212,163,115,0.5)]"
+          />
+        </button>
+      </div>
+    </motion.nav>
+  );
+};
+
+export default Navbar;

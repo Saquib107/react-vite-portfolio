@@ -1,93 +1,88 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import React from "react";
+import { motion } from "framer-motion";
+import heroImg from "../assets/saquib-hero.png";
 import "./Hero.css";
 
 const Hero = () => {
-    const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
-    const btnRef = useRef(null);
-    const robotRef = useRef(null);
+  return (
+    <section className="snap-section hero-section">
+      {/* 1. Corner Metadata Labels */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 0.8, x: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="meta-label meta-top-left"
+      >
+        Creative Presentation
+      </motion.div>
 
-    useEffect(() => {
-        const tl = gsap.timeline({ delay: 0.4 });
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 0.8, x: 0 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="meta-label meta-top-right"
+      >
+        <svg viewBox="0 0 100 20" className="hero-arrow">
+          <path d="M0 10 L90 10 M80 0 L90 10 L80 20" fill="none" stroke="currentColor" strokeWidth="1" />
+        </svg>
+      </motion.div>
 
-        tl.fromTo(
-            titleRef.current,
-            { opacity: 0, y: 30, filter: "blur(10px)" },
-            { opacity: 1, y: 0, filter: "blur(0)", duration: 1 }
-        )
-            .fromTo(
-                subtitleRef.current,
-                { opacity: 0, y: 25 },
-                { opacity: 1, y: 0, duration: 0.9 },
-                "-=0.6"
-            )
-            .fromTo(
-                btnRef.current,
-                { opacity: 0, scale: 0.85 },
-                { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" },
-                "-=0.4"
-            );
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.4, duration: 1 }}
+        className="meta-label meta-bottom-left"
+      >
+        Saquib Rayees
+      </motion.div>
 
-        // Neon blink
-        gsap.fromTo(
-            ".neon",
-            { textShadow: "0 0 6px #14f1d9" },
-            {
-                textShadow:
-                    "0 0 18px #14f1d9, 0 0 45px rgba(20,241,217,0.9)",
-                repeat: -1,
-                yoyo: true,
-                duration: 1.6,
-                ease: "sine.inOut",
-            }
-        );
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.6, duration: 1 }}
+        className="meta-label meta-bottom-right"
+      >
+        www.saquib.dev
+      </motion.div>
 
-        // Robot float
-        gsap.to(robotRef.current, {
-            y: -25,
-            repeat: -1,
-            yoyo: true,
-            duration: 6,
-            ease: "sine.inOut",
-        });
-    }, []);
+      {/* 2. Background Text Layer (Filled) */}
+      <div className="hero-text-container">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
+          className="hero-title-large"
+        >
+          PORTFOLIO
+        </motion.h1>
+      </div>
 
-    const goToContact = () => {
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-    };
+      {/* 3. Image Layer (Subject) */}
+      <div className="hero-image-wrapper">
+        <motion.img
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 1.5, ease: "easeOut" }}
+          src={heroImg}
+          alt="Saquib"
+          className="hero-main-image"
+        />
+      </div>
 
-    return (
-        <section id="hero" className="hero">
-            {/* ROBOT BACKGROUND */}
-            <div className="robot-center" ref={robotRef}>
-                <iframe
-                    src="https://my.spline.design/genkubgreetingrobot-bVF06p9adQUA5r0cZ0jN8muT/"
-                    title="Robot"
-                    frameBorder="0"
-                />
-                <div className="robot-glow"></div>
-            </div>
-
-            {/* CENTER CONTENT */}
-            <div className="hero-center">
-                <h1 ref={titleRef} className="hero-title">
-                    Hi, I’m Saquib
-                </h1>
-
-                <h2 className="hero-role neon">Web Developer</h2>
-
-                <p ref={subtitleRef} className="hero-text">
-                    Crafting immersive digital experiences with cutting-edge technologies.
-                    Specializing in full-stack development and modern web animations.
-                </p>
-
-                <button ref={btnRef} className="hero-btn neon-btn" onClick={goToContact}>
-                    HIRE ME →
-                </button>
-            </div>
-        </section>
-    );
+      {/* 4. Foreground Text Layer (Outlined) */}
+      <div className="hero-text-container" style={{ zIndex: 30, position: 'absolute', inset: 0 }}>
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
+          className="hero-title-large text-outline-layer"
+          aria-hidden="true"
+        >
+          PORTFOLIO
+        </motion.h1>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

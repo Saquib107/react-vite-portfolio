@@ -1,142 +1,87 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Code, Database, Palette, Cpu, Globe, Terminal } from 'phosphor-react';
-import './About.css';
-
-gsap.registerPlugin(ScrollTrigger);
+import React from 'react';
+import { motion } from 'framer-motion';
+import aboutImg from '../assets/about-me.jpg';
 
 const About = () => {
-    const sectionRef = useRef(null);
-    const imageRef = useRef(null);
-    const contentRef = useRef(null);
+  return (
+    <section id="about" className="snap-section relative w-full h-screen bg-bg-black flex flex-col md:flex-row items-center justify-center px-10 md:px-24 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-primary-beige/5 z-0" />
+      
+      {/* Image Container */}
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="relative z-10 w-full md:w-1/2 flex justify-center"
+      >
+        <div className="relative group grayscale hover:grayscale-0 transition-all duration-700">
+          <div className="absolute -inset-4 border border-primary-beige/20 scale-95 group-hover:scale-100 transition-transform duration-500" />
+          <img 
+            src={aboutImg} 
+            alt="About Saquib" 
+            className="w-72 h-96 md:w-96 md:h-[500px] object-cover rounded-sm shadow-2xl relative z-20"
+          />
+        </div>
+      </motion.div>
 
-    const skills = [
-        { name: 'HTML', icon: <Code size={32} weight="light" /> },
-        { name: 'CSS', icon: <Palette size={32} weight="light" /> },
-        { name: 'JavaScript', icon: <Terminal size={32} weight="light" /> },
-        { name: 'React', icon: <Code size={32} weight="light" /> },
-        { name: 'Node.js', icon: <Cpu size={32} weight="light" /> },
-        { name: 'MongoDB', icon: <Database size={32} weight="light" /> },
-        { name: 'Express', icon: <Globe size={32} weight="light" /> },
-        { name: 'SQL', icon: <Database size={32} weight="light" /> },
-        { name: 'Bootstrap', icon: <Palette size={32} weight="light" /> },
-        { name: 'Tailwind', icon: <Palette size={32} weight="light" /> },
-        { name: 'GSAP', icon: <Code size={32} weight="light" /> },
-        { name: 'C', icon: <Terminal size={32} weight="light" /> },
-        { name: 'Java', icon: <Cpu size={32} weight="light" /> },
-        { name: 'Python', icon: <Terminal size={32} weight="light" /> }
-    ];
+      {/* Content Container */}
+      <div className="relative z-10 w-full md:w-1/2 mt-12 md:mt-0 flex flex-col justify-center">
+        <motion.div
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.3, duration: 0.8 }}
+        >
+          <span className="font-body text-accent-gold text-xs uppercase tracking-[0.5em] mb-4 block">Introduction</span>
+          <h2 className="text-6xl md:text-8xl font-heading text-primary-beige mb-6 leading-none">
+            ABOUT ME
+          </h2>
+          <div className="w-20 h-1 bg-accent-gold mb-8" />
+          
+          <div className="space-y-6 max-w-lg">
+            <p className="text-secondary-text font-body text-sm leading-relaxed opacity-80">
+              I'm a passionate full-stack developer with expertise in building modern,
+              responsive web applications. With a strong foundation in both frontend
+              and backend technologies, I create seamless digital experiences that
+              combine stunning visuals with robust functionality.
+            </p>
+            <p className="text-secondary-text font-body text-sm leading-relaxed opacity-80">
+              My journey in web development has equipped me with a diverse skill set,
+              from crafting pixel-perfect user interfaces to architecting scalable
+              backend systems.
+            </p>
+          </div>
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                imageRef.current,
-                {
-                    opacity: 0,
-                    x: -100,
-                    filter: 'blur(10px)'
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    filter: 'blur(0px)',
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top 70%',
-                        end: 'bottom bottom',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-
-            gsap.fromTo(
-                contentRef.current.children,
-                {
-                    opacity: 0,
-                    y: 50
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    stagger: 0.2,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top 70%',
-                        end: 'bottom bottom',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-
-            gsap.fromTo(
-                '.skill-card',
-                {
-                    opacity: 0,
-                    scale: 0.8
-                },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 0.5,
-                    stagger: 0.08,
-                    scrollTrigger: {
-                        trigger: '.skills-grid',
-                        start: 'top 80%',
-                        end: 'bottom bottom',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <section id="about" className="about-section" ref={sectionRef}>
-            <div className="about-container">
-                <div className="about-image-wrapper" ref={imageRef}>
-                    <div className="image-glow"></div>
-                    <img
-                        src="https://customer-assets.emergentagent.com/job_2bee8af7-4101-4242-822f-ba9de8bcb5bf/artifacts/dfd17rov_ChatGPT%20Image%20Mar%2029%2C%202025%2C%2008_54_47%20PM.png"
-                        alt="Saquib"
-                        className="profile-image"
-                    />
-                </div>
-
-                <div className="about-content" ref={contentRef}>
-                    <h2 className="section-title">About Me</h2>
-                    <p className="about-text">
-                        I'm a passionate full-stack developer with expertise in building modern,
-                        responsive web applications. With a strong foundation in both frontend
-                        and backend technologies, I create seamless digital experiences that
-                        combine stunning visuals with robust functionality.
-                    </p>
-                    <p className="about-text">
-                        My journey in web development has equipped me with a diverse skill set,
-                        from crafting pixel-perfect user interfaces to architecting scalable
-                        backend systems. I'm constantly exploring new technologies and pushing
-                        the boundaries of what's possible on the web.
-                    </p>
-
-                    <div className="skills-section">
-                        <h3 className="skills-title">Tech Stack</h3>
-                        <div className="skills-grid">
-                            {skills.map((skill, index) => (
-                                <div key={index} className="skill-card">
-                                    <div className="skill-icon">{skill.icon}</div>
-                                    <span className="skill-name">{skill.name}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8, duration: 1 }}
+            className="mt-12 flex items-center gap-8"
+          >
+            <div className="flex flex-col">
+              <span className="text-accent-gold font-heading text-2xl">5+</span>
+              <span className="text-[10px] text-primary-beige/50 uppercase tracking-widest">Years Exp</span>
             </div>
-        </section>
-    );
+            <div className="flex flex-col">
+              <span className="text-accent-gold font-heading text-2xl">50+</span>
+              <span className="text-[10px] text-primary-beige/50 uppercase tracking-widest">Projects Done</span>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Footer bar for the slide */}
+      <div className="absolute bottom-10 left-10 md:left-24 z-30 opacity-50">
+        <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest">Saquib | Creative Developer</span>
+      </div>
+      <div className="absolute bottom-10 right-10 md:right-24 z-30 opacity-50 font-body text-[10px] uppercase tracking-widest">
+        www.saquib.dev
+      </div>
+    </section>
+  );
 };
 
 export default About;

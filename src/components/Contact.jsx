@@ -1,191 +1,89 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { PaperPlaneTilt, GithubLogo, LinkedinLogo, TwitterLogo, InstagramLogo } from 'phosphor-react';
-import { toast } from '../hooks/use-toast';
-import './Contact.css';
-
-gsap.registerPlugin(ScrollTrigger);
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
-    const sectionRef = useRef(null);
-    const formRef = useRef(null);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+  return (
+    <section id="contact" className="snap-section w-full h-screen bg-bg-black flex flex-col items-center justify-center px-10 md:px-24 overflow-hidden relative">
+      {/* Background large text overlay */}
+      <h1 className="absolute text-[20vw] font-heading text-primary-beige/5 leading-none select-none pointer-events-none whitespace-nowrap">
+        GET IN TOUCH
+      </h1>
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                '.section-title',
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top 70%'
-                    }
-                }
-            );
-
-            gsap.fromTo(
-                '.contact-form',
-                {
-                    opacity: 0,
-                    x: -50
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: '.contact-content',
-                        start: 'top 70%'
-                    }
-                }
-            );
-
-            gsap.fromTo(
-                '.contact-info',
-                {
-                    opacity: 0,
-                    x: 50
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: '.contact-content',
-                        start: 'top 70%'
-                    }
-                }
-            );
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        toast({
-            title: "Message Sent!",
-            description: "Thank you for reaching out. I'll get back to you soon.",
-        });
-
-        setFormData({ name: '', email: '', message: '' });
-        setIsSubmitting(false);
-    };
-
-    return (
-        <section id="contact" className="contact-section" ref={sectionRef}>
-            <div className="contact-container">
-                <h2 className="section-title">Get In Touch</h2>
-                <p className="section-subtitle">
-                    Have a project in mind or just want to say hi? Drop me a message!
-                </p>
-
-                <div className="contact-content">
-                    <form className="contact-form" ref={formRef} onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="name" className="form-label">Your Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="form-input"
-                                placeholder="John Doe"
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="email" className="form-label">Email Address</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="form-input"
-                                placeholder="john@example.com"
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="message" className="form-label">Message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                className="form-textarea"
-                                placeholder="Tell me about your project..."
-                                rows="6"
-                                required
-                            ></textarea>
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="btn-primary submit-btn"
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
-                            <PaperPlaneTilt size={20} weight="bold" />
-                        </button>
-                    </form>
-
-                    <div className="contact-info">
-                        <div className="info-card">
-                            <h3 className="info-title">Email</h3>
-                            <p className="info-text">rayeessaquib0022@gmail.com</p>
-                        </div>
-
-                        <div className="info-card">
-                            <h3 className="info-title">Location</h3>
-                            <p className="info-text">Jamshedpur</p>
-                        </div>
-
-                        <div className="info-card">
-                            <h3 className="info-title">Connect</h3>
-                            <div className="social-links">
-                                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                                    <GithubLogo size={28} weight="light" />
-                                </a>
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                                    <LinkedinLogo size={28} weight="light" />
-                                </a>
-                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                                    <InstagramLogo size={28} weight="light" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div className="relative z-10 w-full max-w-4xl grid md:grid-cols-2 gap-16">
+        <motion.div
+           initial={{ opacity: 0, x: -30 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.8 }}
+        >
+          <span className="font-body text-accent-gold text-xs uppercase tracking-[0.5em] mb-4 block">Contact</span>
+          <h2 className="text-6xl md:text-8xl font-heading text-primary-beige mb-8">LET'S TALK</h2>
+          <p className="text-secondary-text font-body text-sm leading-relaxed opacity-70 mb-12">
+            Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+          </p>
+          
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-[1px] bg-accent-gold" />
+              <span className="text-primary-beige font-body text-xs uppercase tracking-widest">hello@saquib.dev</span>
             </div>
-        </section>
-    );
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-[1px] bg-accent-gold" />
+              <span className="text-primary-beige font-body text-xs uppercase tracking-widest">+1 (555) 000-0000</span>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.form 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="space-y-8"
+        >
+          <div className="relative group">
+            <input 
+              type="text" 
+              placeholder="YOUR NAME" 
+              className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest"
+            />
+          </div>
+          <div className="relative group">
+            <input 
+              type="email" 
+              placeholder="YOUR EMAIL" 
+              className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest"
+            />
+          </div>
+          <div className="relative group">
+            <textarea 
+              placeholder="YOUR MESSAGE" 
+              rows="4"
+              className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest resize-none"
+            ></textarea>
+          </div>
+          
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group flex items-center gap-4 py-4 px-10 bg-accent-gold text-bg-black font-heading text-xl uppercase tracking-widest rounded-full transition-all hover:bg-primary-beige"
+          >
+            SEND MESSAGE
+            <span className="w-6 h-6 flex items-center justify-center rounded-full border border-bg-black group-hover:translate-x-2 transition-transform">
+              →
+            </span>
+          </motion.button>
+        </motion.form>
+      </div>
+
+      {/* Slide Footer */}
+      <div className="absolute bottom-10 left-10 md:left-24 z-30 opacity-50 flex items-center gap-6">
+        <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest cursor-pointer hover:text-accent-gold transition-colors">LinkedIn</span>
+        <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest cursor-pointer hover:text-accent-gold transition-colors">Twitter</span>
+        <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest cursor-pointer hover:text-accent-gold transition-colors">GitHub</span>
+      </div>
+    </section>
+  );
 };
 
 export default Contact;
