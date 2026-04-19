@@ -5,7 +5,7 @@ import "./Hero.css";
 
 const Hero = () => {
   return (
-    <section className="snap-section hero-section">
+    <section id="hero" className="snap-section hero-section">
       {/* 1. Corner Metadata Labels */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -22,9 +22,6 @@ const Hero = () => {
         transition={{ delay: 1.2, duration: 1 }}
         className="meta-label meta-top-right"
       >
-        <svg viewBox="0 0 100 20" className="hero-arrow">
-          <path d="M0 10 L90 10 M80 0 L90 10 L80 20" fill="none" stroke="currentColor" strokeWidth="1" />
-        </svg>
       </motion.div>
 
       <motion.div

@@ -11,17 +11,17 @@ const Contact = () => {
 
       <div className="relative z-10 w-full max-w-4xl grid md:grid-cols-2 gap-16">
         <motion.div
-           initial={{ opacity: 0, x: -30 }}
-           whileInView={{ opacity: 1, x: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
           <span className="font-body text-accent-gold text-xs uppercase tracking-[0.5em] mb-4 block">Contact</span>
           <h2 className="text-6xl md:text-8xl font-heading text-primary-beige mb-8">LET'S TALK</h2>
           <p className="text-secondary-text font-body text-sm leading-relaxed opacity-70 mb-12">
             Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
           </p>
-          
+
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <div className="w-8 h-[1px] bg-accent-gold" />
@@ -34,7 +34,7 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        <motion.form 
+        <motion.form
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -42,27 +42,27 @@ const Contact = () => {
           className="space-y-8"
         >
           <div className="relative group">
-            <input 
-              type="text" 
-              placeholder="YOUR NAME" 
+            <input
+              type="text"
+              placeholder="YOUR NAME"
               className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest"
             />
           </div>
           <div className="relative group">
-            <input 
-              type="email" 
-              placeholder="YOUR EMAIL" 
+            <input
+              type="email"
+              placeholder="YOUR EMAIL"
               className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest"
             />
           </div>
           <div className="relative group">
-            <textarea 
-              placeholder="YOUR MESSAGE" 
+            <textarea
+              placeholder="YOUR MESSAGE"
               rows="4"
               className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest resize-none"
             ></textarea>
           </div>
-          
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -74,13 +74,6 @@ const Contact = () => {
             </span>
           </motion.button>
         </motion.form>
-      </div>
-
-      {/* Slide Footer */}
-      <div className="absolute bottom-10 left-10 md:left-24 z-30 opacity-50 flex items-center gap-6">
-        <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest cursor-pointer hover:text-accent-gold transition-colors">LinkedIn</span>
-        <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest cursor-pointer hover:text-accent-gold transition-colors">Twitter</span>
-        <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest cursor-pointer hover:text-accent-gold transition-colors">GitHub</span>
       </div>
     </section>
   );

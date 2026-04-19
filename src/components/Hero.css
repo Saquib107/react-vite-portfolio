@@ -21,13 +21,19 @@
 /* Background Large Text */
 .hero-title-large {
   font-family: var(--font-heading);
-  font-size: 24vw; /* Massively expanded to span full width like reference */
+  font-size: 15vw; /* Adjusted for mobile view, desktop handled via media query below */
   line-height: 0.75;
-  letter-spacing: -0.05em; /* Adjusted tightening for massive size */
+  letter-spacing: -0.05em; 
   color: var(--color-primary-beige);
   text-transform: uppercase;
   user-select: none;
   white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .hero-title-large {
+    font-size: 24vw; /* Massively expanded to span full width on desktop */
+  }
 }
 
 /* Specific outlined letter class if needed */
@@ -109,21 +115,34 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .hero-title-large {
-    font-size: 25vw;
+    font-size: 20vw; /* Keeps it strictly within bounds, no horizontal bleeding */
   }
   
   .hero-image-wrapper {
-    height: 70vh;
+    height: 75vh;
   }
   
   .meta-label {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
   
-  .meta-top-left, .meta-top-right, .meta-bottom-left, .meta-bottom-right {
-    top: 20px;
-    bottom: 20px;
+  .meta-top-left {
+    top: 100px;
     left: 20px;
+  }
+  
+  .meta-top-right {
+    top: 100px;
+    right: 20px;
+  }
+  
+  .meta-bottom-left {
+    bottom: 30px;
+    left: 20px;
+  }
+  
+  .meta-bottom-right {
+    bottom: 30px;
     right: 20px;
   }
 }

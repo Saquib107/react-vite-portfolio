@@ -3,14 +3,10 @@ import { motion } from 'framer-motion';
 
 const TableOfContents = () => {
   const links = [
-    { name: 'Introduction', id: 'about' },
-    { name: 'Experience', id: 'skills' },
-    { name: 'First Project', id: 'projects' },
-    { name: 'Second Project', id: 'projects' },
-    { name: 'Contact', id: 'contact' },
     { name: 'About me', id: 'about' },
-    { name: 'Personal skill', id: 'skills' },
-    { name: 'Project portfolio', id: 'projects' },
+    { name: 'Skill', id: 'skills' },
+    { name: 'Project', id: 'projects' },
+    { name: 'Contact', id: 'contact' },
     { name: 'Thank you', id: 'footer' }
   ];
 

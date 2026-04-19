@@ -1,108 +1,91 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Link } from 'react-scroll';
-import { Heart, GithubLogo, LinkedinLogo, TwitterLogo, InstagramLogo } from 'phosphor-react';
-import './Footer.css';
-
-gsap.registerPlugin(ScrollTrigger);
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
-    const footerRef = useRef(null);
+  const navLinks = [
+    { name: 'Home', id: 'hero' },
+    { name: 'About', id: 'about' },
+    { name: 'Projects', id: 'projects' },
+    { name: 'Contact', id: 'contact' }
+  ];
 
-    useEffect(() => {
-        // Create floating particles
-        for (let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            footerRef.current.querySelector('.particles-container').appendChild(particle);
-        }
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                footerRef.current,
-                { opacity: 0, y: 60 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: footerRef.current,
-                        start: 'top 90%'
-                    }
-                }
-            );
-        }, footerRef);
+  return (
+    <footer id='footer' className="snap-section w-full h-screen bg-bg-black flex flex-col justify-between px-10 md:px-24 py-20 overflow-hidden relative">
+      {/* Top section with Logo and Tagline */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full h-full pb-10 border-b border-primary-beige/10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-10 md:mb-0"
+        >
+          <h2 className="text-8xl md:text-[12vw] font-heading text-primary-beige leading-none tracking-tighter">THANK YOU<span className="text-accent-gold">.</span></h2>
+          <p className="font-body text-primary-beige/50 text-sm md:text-base tracking-widest uppercase mt-4 max-w-sm">
+            Building the future, one line of code at a time.
+          </p>
+        </motion.div>
 
-        return () => ctx.revert();
-    }, []);
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex gap-16"
+        >
+          {/* Navigation Links */}
+          <div className="flex flex-col gap-4">
+            <span className="font-body text-accent-gold text-xs uppercase tracking-[0.3em] font-bold mb-2">Menu</span>
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-left font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors outline-none cursor-pointer"
+              >
+                {link.name}
+              </button>
+            ))}
+          </div>
 
-    const navLinks = [
-        { name: 'Home', to: 'hero' },
-        { name: 'About', to: 'about' },
-        { name: 'Projects', to: 'projects' },
-        { name: 'Contact', to: 'contact' }
-    ];
+          {/* Socials */}
+          <div className="flex flex-col gap-4">
+            <span className="font-body text-accent-gold text-xs uppercase tracking-[0.3em] font-bold mb-2">Socials</span>
+            <a href="https://github.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">GitHub</a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">Twitter</a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">Instagram</a>
+          </div>
+        </motion.div>
+      </div>
 
-    return (
-        <footer className="footer" ref={footerRef}>
-            <div className="particles-container"></div>
+      {/* Bottom section */}
+      <div className="w-full pt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="font-body text-primary-beige/40 text-xs uppercase tracking-widest text-center"
+        >
+          &copy; {new Date().getFullYear()} SAQUIB. ALL RIGHTS RESERVED.
+        </motion.p>
 
-            <div className="footer-container">
-                <div className="footer-content">
-                    <div className="footer-brand">
-                        <h3 className="footer-logo">SAQUIB</h3>
-                        <p className="footer-tagline">
-                            Building the future, one line of code at a time
-                        </p>
-                    </div>
-
-                    <div className="footer-links">
-                        <h4 className="footer-links-title">Quick Links</h4>
-                        <nav className="footer-nav">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.to}
-                                    to={link.to}
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-80}
-                                    duration={500}
-                                    className="footer-link"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                        </nav>
-                    </div>
-
-                    <div className="footer-social">
-                        <h4 className="footer-social-title">Follow Me</h4>
-                        <div className="footer-social-links">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
-                                <GithubLogo size={24} weight="light" />
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
-                                <LinkedinLogo size={24} weight="light" />
-                            </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">
-                                <InstagramLogo size={24} weight="light" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="footer-bottom">
-                    <p className="footer-copyright">
-                        © 2025 Saquib. Made with <Heart size={16} weight="fill" className="heart-icon" /> using React & GSAP
-                    </p>
-                </div>
-            </div>
-        </footer>
-    );
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="font-body text-primary-beige/40 text-xs uppercase tracking-widest flex items-center gap-2"
+        >
+          MADE WITH <span className="text-accent-gold">♥</span> IN REACT
+        </motion.p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
