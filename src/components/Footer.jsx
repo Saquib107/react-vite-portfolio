@@ -54,10 +54,9 @@ const Footer = () => {
           {/* Socials */}
           <div className="flex flex-col gap-4">
             <span className="font-body text-accent-gold text-xs uppercase tracking-[0.3em] font-bold mb-2">Socials</span>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">GitHub</a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">Twitter</a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">Instagram</a>
+            <a href="https://github.com/Saquib107" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">GitHub</a>
+            <a href="https://www.linkedin.com/in/saquib-rayees-6b9585339?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">LinkedIn</a>
+            <a href="https://www.instagram.com/saquibsr7?igsh=MTY0bHdrdXVjcGw4MA==" target="_blank" rel="noreferrer" className="font-body text-primary-beige/70 text-sm uppercase tracking-widest hover:text-primary-beige transition-colors">Instagram</a>
           </div>
         </motion.div>
       </div>

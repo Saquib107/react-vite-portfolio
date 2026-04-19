@@ -3,34 +3,28 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
-    title: 'ECO-TRADER',
-    problem: 'Fragmentation in sustainable goods markets leading to inefficient supply chains.',
-    solution: 'A unified platform for verified carbon-neutral trading using blockchain tech.',
-    result: 'Increased verifiable trades by 400% in Q1 and reduced audit times by half.',
+    title: 'Decision IQ',
+    description: 'Built a decision-making web application that enables users to analyze and compare choices using structured logic and scoring. Implemented dynamic input handling and interactive UI components to improve usability and clarity in complex decision scenarios.',
     tech: ['Next.js', 'Tailwind', 'MongoDB'],
     accent: '#d4a373',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/Saquib107/Decision-IQ',
+    demoUrl: 'https://decision-iq-three.vercel.app/'
   },
   {
-    title: 'PULSE AI',
-    problem: 'Delayed health micro-monitoring requiring manual data entry from practitioners.',
-    solution: 'Real-time biometric analysis with predictive modeling and automated alerts.',
-    result: 'Cut response times for critical alerts down to milliseconds, potentially saving lives.',
+    title: 'AI Park',
+    description: 'Developed a real-An AI-powered web platform that integrates intelligent tools through external APIs to deliver interactive user experiences. Developed dynamic UI components and handled real-time API responses to ensure smooth interaction. Emphasis was placed on usability and efficient data handling.',
     tech: ['React', 'D3.js', 'Node.js'],
     accent: '#f5e6d3',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/Saquib107/Ai-park',
+    demoUrl: 'https://ai-park-one.vercel.app/'
   },
   {
-    title: 'AUTH KIT',
-    problem: 'Complex authentication workflows scaring off non-technical early stage startups.',
-    solution: 'A unified SDK for high-security user management with drop-in UI components.',
-    result: 'Adopted by 50+ startups within the first month of beta launch.',
+    title: 'Glam Beauty Studio',
+    description: 'Created a unified A modern business website designed to showcase beauty services and enhance customer engagement. Built a responsive and visually appealing interface with a focus on user experience, layout clarity, and mobile optimization.',
     tech: ['React', 'Node.js', 'Redis'],
     accent: '#d4a373',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/Saquib107/GLAMBEAUTYSTUDIO',
+    demoUrl: 'https://glambeautystudio.vercel.app/'
   }
 ];
 
@@ -60,38 +54,17 @@ const ProjectSlide = ({ project, index }) => {
             {project.title}
           </motion.h2>
 
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <h4 className="text-secondary-text/50 font-body text-[10px] uppercase tracking-widest mb-1 select-none">The Problem</h4>
-              <p className="text-primary-beige/60 font-body text-xs md:text-sm max-w-sm">
-                {project.problem}
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <h4 className="text-accent-gold font-body text-[10px] uppercase tracking-widest mb-1 select-none">Our Solution</h4>
-              <p className="text-primary-beige/90 font-body text-xs md:text-sm max-w-sm">
-                {project.solution}
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <h4 className="text-primary-beige/50 font-body text-[10px] uppercase tracking-widest mb-1 select-none">The Result</h4>
-              <p className="text-primary-beige font-body text-xs md:text-sm max-w-sm">
-                {project.result}
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mb-8"
+          >
+            <h4 className="text-accent-gold font-body text-[10px] uppercase tracking-widest mb-2 select-none">Overview</h4>
+            <p className="text-primary-beige/80 font-body text-xs md:text-sm max-w-sm leading-relaxed">
+              {project.description}
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -115,6 +88,8 @@ const ProjectSlide = ({ project, index }) => {
           >
             <a
               href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative w-full sm:w-auto flex justify-center items-center px-6 py-3 rounded-full border border-primary-beige/30 hover:border-accent-gold/80 transition-all duration-300"
             >
               <div className="absolute inset-0 bg-accent-gold/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -122,6 +97,8 @@ const ProjectSlide = ({ project, index }) => {
             </a>
             <a
               href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative w-full sm:w-auto flex justify-center items-center px-6 py-3 rounded-full bg-primary-beige text-bg-black hover:bg-accent-gold transition-all duration-300 shadow-[0_0_15px_rgba(245,230,211,0.1)] hover:shadow-[0_0_20px_rgba(212,163,115,0.4)]"
             >
               <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.2em] font-semibold select-none">Live Demo</span>

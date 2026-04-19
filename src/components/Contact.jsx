@@ -25,11 +25,11 @@ const Contact = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <div className="w-8 h-[1px] bg-accent-gold" />
-              <span className="text-primary-beige font-body text-xs uppercase tracking-widest">hello@saquib.dev</span>
+              <span className="text-primary-beige font-body text-xs tracking-widest">rayeessaquib0022@gmail.com</span>
             </div>
             <div className="flex items-center gap-4">
               <div className="w-8 h-[1px] bg-accent-gold" />
-              <span className="text-primary-beige font-body text-xs uppercase tracking-widest">+1 (555) 000-0000</span>
+              <span className="text-primary-beige font-body text-xs uppercase tracking-widest">8340270445</span>
             </div>
           </div>
         </motion.div>
@@ -40,10 +40,18 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
+          action="https://formsubmit.co/rayeessaquib0022@gmail.com"
+          method="POST"
         >
+          {/* FormSubmit Configuration */}
+          <input type="hidden" name="_subject" value="New Contact Message from Portfolio!" />
+          <input type="hidden" name="_captcha" value="false" />
+
           <div className="relative group">
             <input
               type="text"
+              name="name"
+              required
               placeholder="YOUR NAME"
               className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest"
             />
@@ -51,12 +59,16 @@ const Contact = () => {
           <div className="relative group">
             <input
               type="email"
+              name="email"
+              required
               placeholder="YOUR EMAIL"
               className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest"
             />
           </div>
           <div className="relative group">
             <textarea
+              name="message"
+              required
               placeholder="YOUR MESSAGE"
               rows="4"
               className="w-full bg-transparent border-b border-primary-beige/20 py-4 font-body text-xs text-primary-beige outline-none focus:border-accent-gold transition-colors tracking-widest resize-none"
@@ -64,6 +76,7 @@ const Contact = () => {
           </div>
 
           <motion.button
+            type="submit"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="group flex items-center gap-4 py-4 px-10 bg-accent-gold text-bg-black font-heading text-xl uppercase tracking-widest rounded-full transition-all hover:bg-primary-beige"

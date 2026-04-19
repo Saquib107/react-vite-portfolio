@@ -33,15 +33,6 @@ const Hero = () => {
         Saquib Rayees
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.6, duration: 1 }}
-        className="meta-label meta-bottom-right"
-      >
-        www.saquib.dev
-      </motion.div>
-
       {/* 2. Background Text Layer (Filled) */}
       <div className="hero-text-container">
         <motion.h1
