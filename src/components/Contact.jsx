@@ -19,7 +19,9 @@ const Contact = () => {
           <span className="font-body text-accent-gold text-xs uppercase tracking-[0.5em] mb-4 block">Contact</span>
           <h2 className="text-6xl md:text-8xl font-heading text-primary-beige mb-8">LET'S TALK</h2>
           <p className="text-secondary-text font-body text-sm leading-relaxed opacity-70 mb-12">
-            Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+            Whether you have a project in mind, want to collaborate on something bold,
+            or simply want to say hello — my inbox is always open. Let's build something
+            remarkable together.
           </p>
 
           <div className="space-y-4">
@@ -29,7 +31,7 @@ const Contact = () => {
             </div>
             <div className="flex items-center gap-4">
               <div className="w-8 h-[1px] bg-accent-gold" />
-              <span className="text-primary-beige font-body text-xs uppercase tracking-widest">8340270445</span>
+              <span className="text-primary-beige font-body text-xs tracking-widest">8340270445</span>
             </div>
           </div>
         </motion.div>

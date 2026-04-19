@@ -73,7 +73,7 @@ const Skills = () => {
           </h2>
           <div className="w-12 h-[2px] bg-accent-gold mb-3" />
           <p className="text-primary-beige/60 font-body text-[10px] md:text-xs tracking-[0.2em] uppercase max-w-md">
-            Technologies I use to build modern web applications.
+            The tools I wield to turn ideas into polished, production-ready products.
           </p>
         </motion.div>
 

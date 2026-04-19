@@ -1,32 +1,39 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import decisionIqImg from '../assets/project-decision-iq.png';
+import aiParkImg from '../assets/project-ai-park.png';
+import glamBeautyImg from '../assets/project-glam-beauty.png';
 
 const projects = [
   {
     title: 'Decision IQ',
-    description: 'Built a decision-making web application that enables users to analyze and compare choices using structured logic and scoring. Implemented dynamic input handling and interactive UI components to improve usability and clarity in complex decision scenarios.',
-    tech: ['Next.js', 'Tailwind', 'MongoDB'],
+    description: 'A smart decision-making web application that helps users navigate complex choices through structured logic, weighted scoring, and side-by-side comparisons. Built with a clean, interactive UI that transforms abstract decisions into data-driven clarity — designed to reduce cognitive overload and improve outcome confidence.',
+    tech: ['Next.js', 'Tailwind CSS', 'MongoDB'],
     accent: '#d4a373',
+    image: decisionIqImg,
     githubUrl: 'https://github.com/Saquib107/Decision-IQ',
     demoUrl: 'https://decision-iq-three.vercel.app/'
   },
   {
     title: 'AI Park',
-    description: 'Developed a real-An AI-powered web platform that integrates intelligent tools through external APIs to deliver interactive user experiences. Developed dynamic UI components and handled real-time API responses to ensure smooth interaction. Emphasis was placed on usability and efficient data handling.',
-    tech: ['React', 'D3.js', 'Node.js'],
+    description: 'A full-featured theme park web platform built for SunnySplash — an AI-enhanced water park experience. Includes ride exploration, real-time ticket booking, an interactive park map, emergency information, and a membership system. Engineered with seamless navigation, responsive layouts, and a focus on delivering high-energy user engagement across all devices.',
+    tech: ['React', 'React Router', 'Tailwind CSS'],
     accent: '#f5e6d3',
+    image: aiParkImg,
     githubUrl: 'https://github.com/Saquib107/Ai-park',
     demoUrl: 'https://ai-park-one.vercel.app/'
   },
   {
     title: 'Glam Beauty Studio',
-    description: 'Created a unified A modern business website designed to showcase beauty services and enhance customer engagement. Built a responsive and visually appealing interface with a focus on user experience, layout clarity, and mobile optimization.',
-    tech: ['React', 'Node.js', 'Redis'],
+    description: 'A premium digital presence for a luxury ladies\'s beauty salon. The site elegantly showcases the studio\'s full range of services — from bridal makeup and hair styling to facial treatments — with a refined aesthetic using Playfair Display typography and a rose gold palette. Built with a focus on brand identity, mobile responsiveness, and converting visitors into clients.',
+    tech: ['React', 'Tailwind CSS', 'Vite'],
     accent: '#d4a373',
+    image: glamBeautyImg,
     githubUrl: 'https://github.com/Saquib107/GLAMBEAUTYSTUDIO',
     demoUrl: 'https://glambeautystudio.vercel.app/'
   }
 ];
+
 
 const ProjectSlide = ({ project, index }) => {
   const isEven = index % 2 === 0;
@@ -106,25 +113,23 @@ const ProjectSlide = ({ project, index }) => {
           </motion.div>
         </div>
 
-        {/* IMAGE/MOCKUP BLOCK */}
+        {/* PROJECT IMAGE BLOCK */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
-          className="w-full md:w-1/2 h-64 md:h-[60vh] bg-bg-black/50 border border-primary-beige/5 relative overflow-hidden group shadow-2xl rounded-sm"
+          className="w-full md:w-1/2 h-64 md:h-[60vh] relative overflow-hidden group shadow-2xl rounded-sm border border-primary-beige/5"
         >
-          {/* Faux Image Background until populated */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-beige/5 to-transparent z-0" />
-          <div className="absolute inset-0 bg-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-          <div className="absolute inset-0 flex items-center justify-center z-20">
-            <span className="font-heading text-4xl text-primary-beige opacity-10 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105 select-none tracking-widest">
-              [ PROJECT MEDIA ]
-            </span>
-          </div>
-
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+          {/* Dark overlay that lightens on hover */}
+          <div className="absolute inset-0 bg-bg-black/40 group-hover:bg-bg-black/10 transition-all duration-500 z-10" />
           {/* Aesthetic Corner Lines */}
-          <div className="absolute top-0 right-0 w-32 h-32 border-t border-r border-accent-gold/20 opacity-30 z-30 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 border-b border-l border-accent-gold/20 opacity-30 z-30 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-24 h-24 border-t border-r border-accent-gold/30 opacity-60 z-20 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-24 h-24 border-b border-l border-accent-gold/30 opacity-60 z-20 pointer-events-none" />
         </motion.div>
 
       </div>

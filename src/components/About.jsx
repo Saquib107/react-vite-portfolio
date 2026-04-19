@@ -40,15 +40,15 @@ const About = () => {
 
           <div className="space-y-6 max-w-lg">
             <p className="text-secondary-text font-body text-sm leading-relaxed opacity-80">
-              I'm a passionate full-stack developer with expertise in building modern,
-              responsive web applications. With a strong foundation in both frontend
-              and backend technologies, I create seamless digital experiences that
-              combine stunning visuals with robust functionality.
+              I'm Saquib Rayees — a full-stack developer who thrives at the intersection of
+              thoughtful engineering and expressive design. I build fast, accessible,
+              and visually refined web applications that go beyond just working — they feel right.
             </p>
             <p className="text-secondary-text font-body text-sm leading-relaxed opacity-80">
-              My journey in web development has equipped me with a diverse skill set,
-              from crafting pixel-perfect user interfaces to architecting scalable
-              backend systems.
+              My toolkit spans the full development spectrum: from crafting pixel-perfect
+              React interfaces to architecting robust Node.js backends and MongoDB data layers.
+              I care deeply about code quality, performance, and the details that separate
+              good products from great ones.
             </p>
           </div>
 
@@ -57,15 +57,21 @@ const About = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="mt-12 flex items-center gap-8"
+            className="mt-12 flex items-center gap-10"
           >
             <div className="flex flex-col">
-              <span className="text-accent-gold font-heading text-2xl">5+</span>
-              <span className="text-[10px] text-primary-beige/50 uppercase tracking-widest">Years Exp</span>
+              <span className="text-accent-gold font-heading text-2xl">3+</span>
+              <span className="text-[10px] text-primary-beige/50 uppercase tracking-widest">Years Coding</span>
             </div>
+            <div className="w-[1px] h-8 bg-primary-beige/10" />
             <div className="flex flex-col">
-              <span className="text-accent-gold font-heading text-2xl">50+</span>
-              <span className="text-[10px] text-primary-beige/50 uppercase tracking-widest">Projects Done</span>
+              <span className="text-accent-gold font-heading text-2xl">10+</span>
+              <span className="text-[10px] text-primary-beige/50 uppercase tracking-widest">Projects Built</span>
+            </div>
+            <div className="w-[1px] h-8 bg-primary-beige/10" />
+            <div className="flex flex-col">
+              <span className="text-accent-gold font-heading text-2xl">∞</span>
+              <span className="text-[10px] text-primary-beige/50 uppercase tracking-widest">Lines Written</span>
             </div>
           </motion.div>
         </motion.div>

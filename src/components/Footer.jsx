@@ -26,7 +26,7 @@ const Footer = () => {
         >
           <h2 className="text-8xl md:text-[12vw] font-heading text-primary-beige leading-none tracking-tighter">THANK YOU<span className="text-accent-gold">.</span></h2>
           <p className="font-body text-primary-beige/50 text-sm md:text-base tracking-widest uppercase mt-4 max-w-sm">
-            Building the future, one line of code at a time.
+            Designed with intention. Engineered with precision.
           </p>
         </motion.div>
 
