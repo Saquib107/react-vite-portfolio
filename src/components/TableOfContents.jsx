@@ -11,28 +11,47 @@ const TableOfContents = () => {
   ];
 
   return (
-    <div className="w-full h-full bg-bg-black flex flex-col md:flex-row items-center justify-between px-10 md:px-20 py-20">
-      <div className="md:w-1/2">
-        <h2 className="text-8xl md:text-9xl font-heading text-primary-beige leading-none opacity-90 mb-8">
+    <div className="w-full min-h-[100dvh] bg-bg-black flex flex-col md:flex-row items-center justify-center md:justify-between px-6 sm:px-10 md:px-20 py-20 relative overflow-hidden">
+      <div className="w-full md:w-1/2 flex flex-col justify-center mb-12 md:mb-0">
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading text-primary-beige leading-none opacity-90 mb-6 md:mb-8"
+        >
           TABLE OF <br /> CONTENTS
-        </h2>
-        <p className="text-primary-beige/60 max-width-md font-body text-sm uppercase tracking-widest">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-primary-beige/60 max-w-sm font-body text-[10px] md:text-xs uppercase tracking-widest leading-relaxed"
+        >
+          A curated walkthrough of who I am, what I build, and how to reach me.
+        </motion.p>
       </div>
-      <div className="md:w-1/2 grid grid-cols-2 gap-4 mt-12 md:mt-0">
-        {links.map((link, index) => (
-          <motion.button
-            key={index}
-            whileHover={{ scale: 1.05, backgroundColor: '#f5e6d3', color: '#0a0a0a' }}
-            className="border border-primary-beige/30 rounded-full py-4 px-8 text-primary-beige text-xs uppercase tracking-widest font-body"
-            onClick={() => {
-              document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            {link.name}
-          </motion.button>
-        ))}
+
+      <div className="w-full md:w-1/2 flex items-center md:items-start justify-center md:justify-end">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-sm md:max-w-md">
+          {links.map((link, index) => (
+            <motion.button
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 + index * 0.1 }}
+              whileHover={{ scale: 1.05, backgroundColor: '#f5e6d3', color: '#0a0a0a' }}
+              whileTap={{ scale: 0.95 }}
+              className="border border-primary-beige/30 rounded-full py-4 sm:py-5 px-6 text-primary-beige text-[10px] sm:text-xs uppercase tracking-widest font-body cursor-pointer shadow-[0_0_10px_rgba(245,230,211,0.02)] hover:shadow-[0_0_20px_rgba(245,230,211,0.15)] transition-shadow duration-300"
+              onClick={() => {
+                document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              {link.name}
+            </motion.button>
+          ))}
+        </div>
       </div>
     </div>
   );

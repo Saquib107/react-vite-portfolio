@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <section id="contact" className="snap-section w-full h-screen bg-bg-black flex flex-col items-center justify-center px-10 md:px-24 overflow-hidden relative">
       {/* Background large text overlay */}
-      <h1 className="absolute text-[20vw] font-heading text-primary-beige/5 leading-none select-none pointer-events-none whitespace-nowrap">
+      <h1 className="hidden xl:block absolute text-[20vw] font-heading text-primary-beige/5 leading-none select-none pointer-events-none whitespace-nowrap">
         GET IN TOUCH
       </h1>
 
@@ -17,7 +17,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="font-body text-accent-gold text-xs uppercase tracking-[0.5em] mb-4 block">Contact</span>
-          <h2 className="text-6xl md:text-8xl font-heading text-primary-beige mb-8">LET'S TALK</h2>
+          <h2 className="text-5xl md:text-8xl font-heading text-primary-beige mb-8">LET'S TALK</h2>
           <p className="text-secondary-text font-body text-sm leading-relaxed opacity-70 mb-12">
             Whether you have a project in mind, want to collaborate on something bold,
             or simply want to say hello — my inbox is always open. Let's build something
@@ -79,9 +79,9 @@ const Contact = () => {
 
           <motion.button
             type="submit"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group flex items-center gap-4 py-4 px-10 bg-accent-gold text-bg-black font-heading text-xl uppercase tracking-widest rounded-full transition-all hover:bg-primary-beige"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="group flex w-full justify-center items-center gap-4 py-4 px-10 bg-accent-gold text-bg-black font-heading text-xl uppercase tracking-widest rounded-full transition-all hover:bg-primary-beige"
           >
             SEND MESSAGE
             <span className="w-6 h-6 flex items-center justify-center rounded-full border border-bg-black group-hover:translate-x-2 transition-transform">

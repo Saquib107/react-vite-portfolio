@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = () => {
+const Navbar = ({ containerRef }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState("hero");
 
   const navLinks = [
     { name: "Home", id: "hero" },
@@ -20,6 +13,43 @@ const Navbar = () => {
     { name: "Projects", id: "projects" },
     { name: "Contact", id: "contact" },
   ];
+
+  useEffect(() => {
+    const container = containerRef?.current || document.querySelector('.snap-container');
+    if (!container) return;
+    
+    const handleScroll = (e) => {
+      setIsScrolled(e.target.scrollTop > 50);
+    };
+    
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [containerRef]);
+
+  useEffect(() => {
+    const container = containerRef?.current || document.querySelector('.snap-container');
+    if (!container) return;
+
+    const observerOptions = {
+      root: container,
+      rootMargin: "-10% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target.id) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sectionsToObserve = navLinks.map(link => document.getElementById(link.id)).filter(Boolean);
+    sectionsToObserve.forEach(sec => observer.observe(sec));
+
+    return () => observer.disconnect();
+  }, [containerRef]);
 
   // Helper for scroll navigation
   const scrollToSection = (id) => {
@@ -52,19 +82,30 @@ const Navbar = () => {
               <li key={link.id}>
                 <button
                   onClick={() => scrollToSection(link.id)}
-                  className="text-primary-beige/50 font-body text-[10px] uppercase tracking-widest hover:text-accent-gold transition-colors cursor-pointer outline-none select-none"
+                  className={`font-body text-[10px] uppercase tracking-widest transition-all duration-300 cursor-pointer outline-none select-none ${
+                    activeSection === link.id
+                      ? "text-accent-gold opacity-100"
+                      : "text-primary-beige opacity-50 hover:opacity-100 hover:text-accent-gold"
+                  }`}
                 >
                   {link.name}
                 </button>
               </li>
             ))}
           </ul>
+          <a
+            href="/cv.pdf"
+            download="Saquib_CV.pdf"
+            className="border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-bg-black font-body text-[10px] uppercase tracking-widest px-6 py-2 rounded-full transition-all duration-300"
+          >
+            Download CV
+          </a>
         </div>
 
         {/* Mobile Hamburger Toggle */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 z-[60] outline-none"
+          className="md:hidden flex flex-col justify-center items-center w-11 h-11 z-[60] outline-none"
           aria-label="Toggle Menu"
         >
           <span className={`block w-6 h-0.5 bg-primary-beige transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"}`}></span>
@@ -94,12 +135,26 @@ const Navbar = () => {
                 >
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="w-full py-4 text-primary-beige font-heading text-4xl uppercase tracking-widest hover:text-accent-gold transition-colors block"
+                    className={`w-full py-4 font-heading text-4xl uppercase tracking-widest transition-colors block ${activeSection === link.id ? "text-accent-gold" : "text-primary-beige hover:text-accent-gold"}`}
                   >
                     {link.name}
                   </button>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="w-full text-center mt-4"
+              >
+                <a
+                  href="/cv.pdf"
+                  download="Saquib_CV.pdf"
+                  className="inline-block border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-bg-black font-body text-xs uppercase tracking-widest px-8 py-3 rounded-full transition-all duration-300"
+                >
+                  Download CV
+                </a>
+              </motion.li>
             </ul>
           </motion.div>
         )}

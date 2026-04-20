@@ -28,6 +28,17 @@ const Footer = () => {
           <p className="font-body text-primary-beige/50 text-sm md:text-base tracking-widest uppercase mt-4 max-w-sm">
             Designed with intention. Engineered with precision.
           </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="flex items-center gap-3 border border-primary-beige/20 px-4 py-2 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-primary-beige font-body text-[10px] uppercase tracking-[0.2em] font-semibold">
+                Open To Work
+              </span>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div

@@ -1,5 +1,11 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { 
+  SiJavascript, SiPython, SiCplusplus, SiReact, SiHtml5, SiCss,
+  SiNodedotjs, SiExpress, SiFastapi, SiMongodb, SiMysql,
+  SiGit, SiGithub, SiVercel, SiAnaconda
+} from "react-icons/si";
+import { FaJava, FaCode, FaCubes, FaNetworkWired, FaMobileAlt } from "react-icons/fa";
 
 const Skills = () => {
   const sectionRef = useRef(null);
@@ -27,27 +33,53 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Programming Languages",
-      skills: ["JavaScript", "Python", "Java", "C / C++"],
+      skills: [
+        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "Python", icon: <SiPython /> },
+        { name: "Java", icon: <FaJava /> },
+        { name: "C / C++", icon: <SiCplusplus /> }
+      ]
     },
     {
       title: "Frontend",
-      skills: ["React.js", "HTML5", "CSS3"],
+      skills: [
+        { name: "React.js", icon: <SiReact /> },
+        { name: "HTML5", icon: <SiHtml5 /> },
+        { name: "CSS3", icon: <SiCss /> }
+      ]
     },
     {
       title: "Backend",
-      skills: ["Node.js", "Express.js", "FastAPI"],
+      skills: [
+        { name: "Node.js", icon: <SiNodedotjs /> },
+        { name: "Express.js", icon: <SiExpress /> },
+        { name: "FastAPI", icon: <SiFastapi /> }
+      ]
     },
     {
       title: "Databases",
-      skills: ["MongoDB", "MySQL"],
+      skills: [
+        { name: "MongoDB", icon: <SiMongodb /> },
+        { name: "MySQL", icon: <SiMysql /> }
+      ]
     },
     {
       title: "Tools & Platforms",
-      skills: ["Git", "GitHub", "Vercel", "Anaconda"],
+      skills: [
+        { name: "Git", icon: <SiGit /> },
+        { name: "GitHub", icon: <SiGithub /> },
+        { name: "Vercel", icon: <SiVercel /> },
+        { name: "Anaconda", icon: <SiAnaconda /> }
+      ]
     },
     {
       title: "Concepts",
-      skills: ["Data Structures & Algorithms", "Object-Oriented Programming", "API Integration", "Responsive Design"],
+      skills: [
+        { name: "Data Structures & Algorithms", icon: <FaCode /> },
+        { name: "Object-Oriented Programming", icon: <FaCubes /> },
+        { name: "API Integration", icon: <FaNetworkWired /> },
+        { name: "Responsive Design", icon: <FaMobileAlt /> }
+      ]
     },
   ];
 
@@ -64,7 +96,7 @@ const Skills = () => {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="w-full max-w-6xl mx-auto z-10"
+        className="w-full max-w-6xl mx-auto z-10 pl-2 sm:pl-0"
       >
         {/* Header Section */}
         <motion.div variants={itemVariants} className="mb-6 md:mb-8">
@@ -81,20 +113,24 @@ const Skills = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 lg:gap-6">
           {skillCategories.map((category, idx) => (
             <motion.div key={idx} variants={itemVariants} className="flex flex-col">
-              <h3 className="text-accent-gold font-body text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-semibold mb-3 pb-2 border-b border-primary-beige/20 select-none">
+              <h3 className="text-accent-gold font-body text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-semibold mb-4 md:mb-3 pb-2 border-b border-primary-beige/20 select-none w-max">
                 {category.title}
               </h3>
 
-              <div className="flex flex-col gap-1 md:gap-2">
-                {category.skills.map((skill, index) => (
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                {category.skills.map((skillItem, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ scale: 1.05, x: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="group cursor-none relative w-max"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-primary-beige/10 bg-primary-beige/[0.02] hover:bg-primary-beige/[0.05] hover:border-accent-gold/40 transition-all duration-300 group cursor-default"
                   >
-                    <span className="text-primary-beige font-heading text-lg md:text-xl lg:text-2xl transition-colors duration-300 group-hover:text-accent-gold drop-shadow-transparent group-hover:drop-shadow-[0_0_15px_rgba(212,163,115,0.4)] block leading-tight">
-                      {skill}
+                    <span className="text-primary-beige/50 group-hover:text-accent-gold transition-colors duration-300 text-sm md:text-base">
+                      {skillItem.icon}
+                    </span>
+                    <span className="text-primary-beige/80 group-hover:text-primary-beige font-body text-[10px] sm:text-xs tracking-wider transition-colors duration-300 select-none">
+                      {skillItem.name}
                     </span>
                   </motion.div>
                 ))}

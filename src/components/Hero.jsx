@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import heroImg from '../assets/saquib-hero.png';
-import { Link } from 'react-scroll';
 
 const Hero = () => {
   return (
@@ -10,26 +9,26 @@ const Hero = () => {
       className="snap-section relative min-h-screen w-full bg-[#0a0a0a] flex flex-col items-center justify-center overflow-hidden"
     >
       {/* ── Layer 1: BIG "PORTFOLIO" text BEHIND image — ultra-subtle fill ── */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none select-none -translate-y-12">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none select-none">
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 0.07, y: 0 }}
           transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
-          className="font-heading text-[22vw] md:text-[25vw] text-[#f5e6d3] leading-none tracking-tight uppercase whitespace-nowrap"
+          className="font-heading text-[22vw] sm:text-[22vw] md:text-[25vw] text-[#f5e6d3] leading-none tracking-tight uppercase whitespace-nowrap"
         >
           PORTFOLIO
         </motion.h1>
       </div>
 
       {/* ── Layer 2: Portrait image + radial dissolve blending ── */}
-      <div className="absolute inset-0 z-20 flex items-end justify-center pointer-events-none -translate-y-12">
+      <div className="absolute inset-0 z-20 flex items-end justify-center pointer-events-none -translate-y-20 md:-translate-y-28">
         <motion.img
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 1.5, ease: 'easeOut' }}
           src={heroImg}
           alt="Saquib Rayees"
-          className="h-[90vh] w-auto object-contain object-bottom"
+          className="h-[75vh] md:h-[85vh] w-[95%] md:w-auto object-contain object-bottom mt-10 md:mt-0"
           style={{
             maskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
             WebkitMaskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
@@ -47,13 +46,13 @@ const Hero = () => {
       </div>
 
       {/* ── Layer 3: Outlined "PORTFOLIO" text ON TOP of image ── */}
-      <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none select-none -translate-y-12">
+      <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none select-none">
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
           aria-hidden="true"
-          className="font-heading text-[22vw] md:text-[25vw] leading-none tracking-tight uppercase whitespace-nowrap"
+          className="font-heading text-[22vw] sm:text-[22vw] md:text-[25vw] leading-none tracking-tight uppercase whitespace-nowrap"
           style={{
             color: 'transparent',
             WebkitTextStroke: '0.8px rgba(245, 230, 211, 0.35)',
@@ -64,7 +63,7 @@ const Hero = () => {
       </div>
 
       {/* ── Layer 4: Name, role, description, buttons at bottom ── */}
-      <div className="absolute inset-x-0 bottom-0 z-40 flex flex-col items-center pb-14 px-4 gap-1.5">
+      <div className="absolute inset-x-0 bottom-16 md:bottom-24 z-40 flex flex-col items-center pb-0 px-4 gap-2 md:gap-3">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,24 +98,20 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.9, duration: 0.8 }}
-          className="flex flex-row items-center gap-3 pt-2"
+          className="flex flex-col sm:flex-row items-center gap-3 pt-4 w-full sm:w-auto px-6 max-w-sm"
         >
-          <Link
-            to="projects"
-            smooth={true}
-            duration={500}
-            className="inline-flex items-center justify-center px-8 py-3 bg-[#f5e6d3] text-[#0a0a0a] rounded-full cursor-pointer font-body text-[9px] uppercase tracking-[0.25em] font-bold shadow-[0_0_25px_rgba(245,230,211,0.15)] hover:bg-[#d4a373] hover:scale-105 hover:shadow-[0_0_35px_rgba(212,163,115,0.35)] transition-all duration-300"
+          <button
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 bg-[#f5e6d3] text-[#0a0a0a] rounded-full cursor-pointer font-body text-[10px] uppercase tracking-[0.25em] font-bold shadow-[0_0_25px_rgba(245,230,211,0.15)] hover:bg-[#d4a373] hover:scale-105 transition-all duration-300"
           >
             View Work
-          </Link>
-          <Link
-            to="contact"
-            smooth={true}
-            duration={500}
-            className="inline-flex items-center justify-center px-8 py-3 bg-transparent border border-[#f5e6d3]/15 text-[#f5e6d3]/60 rounded-full cursor-pointer font-body text-[9px] uppercase tracking-[0.25em] font-medium hover:border-[#d4a373]/50 hover:text-[#d4a373] hover:scale-105 transition-all duration-300"
+          </button>
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 bg-transparent border border-[#f5e6d3]/15 text-[#f5e6d3]/60 rounded-full cursor-pointer font-body text-[10px] uppercase tracking-[0.25em] font-medium hover:border-[#d4a373]/50 hover:text-[#d4a373] hover:scale-105 transition-all duration-300"
           >
             Contact Me
-          </Link>
+          </button>
         </motion.div>
       </div>
 

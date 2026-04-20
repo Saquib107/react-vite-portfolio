@@ -8,6 +8,7 @@ const projects = [
   {
     title: 'Decision IQ',
     description: 'A smart decision-making web application that helps users navigate complex choices through structured logic, weighted scoring, and side-by-side comparisons. Built with a clean, interactive UI that transforms abstract decisions into data-driven clarity — designed to reduce cognitive overload and improve outcome confidence.',
+    challenge: 'Key Challenge & Solution: Translating abstract reasoning into an intuitive UI without overwhelming the user. Solved by implementing a progressive disclosure pattern and dynamic visual scoring charts.',
     tech: ['Next.js', 'Tailwind CSS', 'MongoDB'],
     accent: '#d4a373',
     image: decisionIqImg,
@@ -17,6 +18,7 @@ const projects = [
   {
     title: 'AI Park',
     description: 'A full-featured theme park web platform built for SunnySplash — an AI-enhanced water park experience. Includes ride exploration, real-time ticket booking, an interactive park map, emergency information, and a membership system. Engineered with seamless navigation, responsive layouts, and a focus on delivering high-energy user engagement across all devices.',
+    challenge: 'Key Challenge & Solution: Managing complex state for real-time bookings across various components. Solved by utilizing robust state management and component structure to ensure fluid user flows.',
     tech: ['React', 'React Router', 'Tailwind CSS'],
     accent: '#f5e6d3',
     image: aiParkImg,
@@ -24,8 +26,9 @@ const projects = [
     demoUrl: 'https://ai-park-one.vercel.app/'
   },
   {
-    title: 'Glam Beauty Studio',
+    title: 'Beauty Studio',
     description: 'A premium digital presence for a luxury ladies\'s beauty salon. The site elegantly showcases the studio\'s full range of services — from bridal makeup and hair styling to facial treatments — with a refined aesthetic using Playfair Display typography and a rose gold palette. Built with a focus on brand identity, mobile responsiveness, and converting visitors into clients.',
+    challenge: 'Key Challenge & Solution: Delivering high-fidelity imagery and luxury branding without sacrificing performance. Solved using optimized image formats and lightweight utility styling.',
     tech: ['React', 'Tailwind CSS', 'Vite'],
     accent: '#d4a373',
     image: glamBeautyImg,
@@ -39,8 +42,8 @@ const ProjectSlide = ({ project, index }) => {
   const isEven = index % 2 === 0;
 
   return (
-    <section className="snap-section w-full h-screen bg-bg-black flex flex-col justify-center px-4 sm:px-6 md:px-20 border-b border-primary-beige/5 overflow-hidden relative">
-      <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10 ${!isEven ? 'md:flex-row-reverse' : ''}`}>
+    <section className="snap-section w-full min-h-screen py-24 md:py-0 bg-bg-black flex flex-col justify-center px-4 sm:px-6 md:px-20 border-b border-primary-beige/5 overflow-hidden relative">
+      <div className={`flex flex-col md:flex-row items-center gap-6 md:gap-10 relative z-10 ${!isEven ? 'md:flex-row-reverse' : ''}`}>
 
         {/* TEXT CONTENT */}
         <div className="w-full md:w-1/2">
@@ -56,7 +59,7 @@ const ProjectSlide = ({ project, index }) => {
             initial={{ opacity: 0, x: isEven ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl lg:text-[8vw] font-heading text-primary-beige leading-none mb-8 lg:-mt-4 select-none"
+            className="text-4xl sm:text-5xl lg:text-[7vw] font-heading text-primary-beige leading-none mb-6 lg:-mt-4 select-none"
           >
             {project.title}
           </motion.h2>
@@ -65,11 +68,15 @@ const ProjectSlide = ({ project, index }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mb-8"
+            className="mb-6"
           >
             <h4 className="text-accent-gold font-body text-[10px] uppercase tracking-widest mb-2 select-none">Overview</h4>
-            <p className="text-primary-beige/80 font-body text-xs md:text-sm max-w-sm leading-relaxed">
+            <p className="text-primary-beige/80 font-body text-xs md:text-sm max-w-sm leading-relaxed mb-4">
               {project.description}
+            </p>
+            <p className="text-primary-beige/60 font-body text-xs md:text-sm max-w-sm leading-relaxed border-l-2 border-accent-gold/40 pl-4 italic">
+              <span className="font-semibold not-italic block mb-1 text-accent-gold/80">Challenge & Solution:</span>
+              {project.challenge.replace("Key Challenge & Solution: ", "")}
             </p>
           </motion.div>
 
@@ -77,7 +84,7 @@ const ProjectSlide = ({ project, index }) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-wrap gap-3 mt-8 select-none"
+            className="flex flex-wrap gap-2 mt-6 select-none"
           >
             {project.tech.map((t, i) => (
               <span key={i} className="text-[9px] border border-primary-beige/20 rounded-full px-4 py-1.5 uppercase font-body tracking-wider text-primary-beige/60 bg-primary-beige/5">
@@ -91,13 +98,13 @@ const ProjectSlide = ({ project, index }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 md:gap-6 mt-8 md:mt-10 w-full"
+            className="flex flex-col sm:flex-row gap-3 md:gap-5 mt-6 md:mt-8 w-full"
           >
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-full sm:w-auto flex justify-center items-center px-6 py-3 rounded-full border border-primary-beige/30 hover:border-accent-gold/80 transition-all duration-300"
+              className="group w-full sm:w-auto relative flex justify-center items-center px-6 py-3 rounded-full border border-primary-beige/30 hover:border-accent-gold/80 transition-all duration-300"
             >
               <div className="absolute inset-0 bg-accent-gold/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative text-primary-beige font-body text-[10px] md:text-xs uppercase tracking-[0.2em] group-hover:text-accent-gold transition-colors duration-300 select-none">GitHub</span>
@@ -118,7 +125,7 @@ const ProjectSlide = ({ project, index }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
-          className="w-full md:w-1/2 h-64 md:h-[60vh] relative overflow-hidden group shadow-2xl rounded-sm border border-primary-beige/5"
+          className="w-full md:w-1/2 h-64 md:h-[50vh] order-first md:order-none relative overflow-hidden group shadow-2xl rounded-sm border border-primary-beige/5"
         >
           <img
             src={project.image}
@@ -139,7 +146,7 @@ const ProjectSlide = ({ project, index }) => {
 
 const Projects = () => {
   return (
-    <div id="projects" className="w-full bg-bg-black">
+    <div id="projects" className="w-full bg-bg-black flex flex-col items-center">
       {projects.map((p, i) => (
         <ProjectSlide key={i} project={p} index={i} />
       ))}

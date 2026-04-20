@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,7 +13,9 @@ import { Toaster } from './components/ui/toaster';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({ container: containerRef });
+  
   const handleLoadingComplete = () => {
     setIsLoading(false);
   };
@@ -22,8 +25,12 @@ function App() {
       {isLoading && <Preloader onComplete={handleLoadingComplete} />}
 
       {!isLoading && (
-        <div className="snap-container">
-          <Navbar />
+        <div className="snap-container" ref={containerRef}>
+          <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-accent-gold origin-left z-[100]"
+            style={{ scaleX: scrollYProgress }}
+          />
+          <Navbar containerRef={containerRef} />
           <Hero />
           <section className="snap-section"><TableOfContents /></section>
           <About />
