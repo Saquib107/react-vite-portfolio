@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = ({ containerRef }) => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -15,24 +15,18 @@ const Navbar = ({ containerRef }) => {
   ];
 
   useEffect(() => {
-    const container = containerRef?.current || document.querySelector('.snap-container');
-    if (!container) return;
-    
-    const handleScroll = (e) => {
-      setIsScrolled(e.target.scrollTop > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
     };
     
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [containerRef]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
-    const container = containerRef?.current || document.querySelector('.snap-container');
-    if (!container) return;
-
     const observerOptions = {
-      root: container,
-      rootMargin: "-10% 0px -50% 0px",
+      root: null,
+      rootMargin: "-20% 0px -50% 0px",
       threshold: 0,
     };
 
@@ -49,7 +43,7 @@ const Navbar = ({ containerRef }) => {
     sectionsToObserve.forEach(sec => observer.observe(sec));
 
     return () => observer.disconnect();
-  }, [containerRef]);
+  }, []);
 
   // Helper for scroll navigation
   const scrollToSection = (id) => {

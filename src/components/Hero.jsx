@@ -28,7 +28,7 @@ const Hero = () => {
           transition={{ delay: 0.3, duration: 1.5, ease: 'easeOut' }}
           src={heroImg}
           alt="Saquib Rayees"
-          className="h-[75vh] md:h-[85vh] w-[95%] md:w-auto object-contain object-bottom mt-10 md:mt-0"
+          className="h-[60vh] sm:h-[75vh] md:h-[85vh] w-[95%] md:w-auto object-contain object-bottom mt-16 md:mt-0"
           style={{
             maskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
             WebkitMaskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
@@ -63,17 +63,17 @@ const Hero = () => {
       </div>
 
       {/* ── Layer 4: Name, role, description, buttons at bottom ── */}
-      <div className="absolute inset-x-0 bottom-16 md:bottom-24 z-40 flex flex-col items-center pb-0 px-4 gap-2 md:gap-3">
+      <div className="absolute inset-x-0 bottom-6 sm:bottom-16 md:bottom-24 z-40 flex flex-col items-center pb-0 px-4 gap-2 md:gap-3">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 1 }}
           className="text-center"
         >
-          <p className="text-[#d4a373] font-body text-[9px] uppercase tracking-[0.7em] mb-2">
+          <p className="text-[#d4a373] font-body text-[8px] sm:text-[9px] uppercase tracking-[0.7em] mb-2">
             Full-Stack Developer
           </p>
-          <h2 className="text-[#f5e6d3] font-heading text-3xl sm:text-4xl md:text-5xl tracking-wider leading-none select-none font-normal">
+          <h2 className="text-[#f5e6d3] font-heading text-4xl sm:text-5xl md:text-5xl tracking-wider leading-none select-none font-normal">
             SAQUIB RAYEES
           </h2>
         </motion.div>

@@ -12,6 +12,7 @@
 @layer base {
   html, body {
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
     overflow-x: hidden;
   }
 
@@ -28,11 +29,6 @@
 }
 
 .snap-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
 }
 
 .snap-section {

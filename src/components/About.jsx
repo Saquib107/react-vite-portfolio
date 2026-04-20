@@ -6,7 +6,7 @@ const About = () => {
   const [isPhotoColored, setIsPhotoColored] = useState(false);
 
   return (
-    <section id="about" className="snap-section relative w-full h-[100dvh] bg-bg-black flex flex-col md:flex-row items-center justify-center px-4 sm:px-10 md:px-24 overflow-hidden pt-12">
+    <section id="about" className="snap-section relative w-full min-h-[100dvh] bg-bg-black flex flex-col md:flex-row items-center justify-center px-4 sm:px-10 md:px-24 py-24 md:py-0 overflow-hidden">
 
       {/* Image Container */}
       <motion.div
@@ -24,7 +24,7 @@ const About = () => {
           <img
             src={aboutImg}
             alt="About Saquib"
-            className="w-48 h-64 sm:w-56 sm:h-72 md:w-80 md:h-[450px] object-cover rounded-sm shadow-2xl relative z-20"
+            className="w-40 h-56 sm:w-48 sm:h-64 md:w-80 md:h-[450px] object-cover rounded-sm shadow-2xl relative z-20"
           />
         </div>
       </motion.div>
@@ -38,7 +38,7 @@ const About = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <span className="font-body text-accent-gold text-[10px] uppercase tracking-[0.4em] mb-2 md:mb-4 block">Introduction</span>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-primary-beige mb-4 leading-none">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-heading text-primary-beige mb-4 leading-none mt-2">
             ABOUT ME
           </h2>
           <div className="w-16 h-1 bg-accent-gold mb-6 mx-auto md:mx-0" />
@@ -71,7 +71,7 @@ const About = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="mt-6 flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-8"
+            className="mt-6 flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-8 max-w-sm mx-auto sm:mx-0"
           >
             <div className="flex flex-col">
               <span className="text-accent-gold font-heading text-xl md:text-2xl">3+</span>
@@ -92,10 +92,10 @@ const About = () => {
       </div>
 
       {/* Footer bar for the slide */}
-      <div className="hidden sm:block absolute bottom-10 left-10 md:left-24 z-30 opacity-50">
+      <div className="hidden sm:block absolute bottom-6 md:bottom-10 left-6 md:left-24 z-30 opacity-50">
         <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest">Saquib | Creative Developer</span>
       </div>
-      <div className="hidden sm:block absolute bottom-10 right-10 md:right-24 z-30 opacity-50 font-body text-[10px] uppercase tracking-widest">
+      <div className="hidden sm:block absolute bottom-6 md:bottom-10 right-6 md:right-24 z-30 opacity-50 font-body text-[10px] uppercase tracking-widest">
         www.saquib.dev
       </div>
     </section>
