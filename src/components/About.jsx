@@ -6,7 +6,7 @@ const About = () => {
   const [isPhotoColored, setIsPhotoColored] = useState(false);
 
   return (
-    <section id="about" className="snap-section relative w-full min-h-[100dvh] bg-bg-black flex flex-col md:flex-row items-center justify-center px-4 sm:px-10 md:px-24 py-24 md:py-0 overflow-hidden">
+    <section id="about" className="snap-section relative w-full min-h-screen bg-bg-black flex flex-col md:flex-row items-center justify-center px-4 sm:px-10 md:px-24 py-16 md:py-24 overflow-hidden gap-8 md:gap-0">
 
       {/* Image Container */}
       <motion.div
