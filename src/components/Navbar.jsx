@@ -56,7 +56,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-4 sm:px-6 md:py-6 md:px-20 flex items-center justify-between ${
+        className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 py-4 px-4 sm:px-6 md:py-6 md:px-20 flex items-center justify-between ${
           isScrolled ? "bg-bg-black/90 backdrop-blur-xl md:py-4" : "bg-transparent"
         }`}
       >
