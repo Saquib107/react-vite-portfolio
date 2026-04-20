@@ -87,7 +87,7 @@ const Skills = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="snap-section min-h-screen bg-bg-black flex flex-col justify-center px-4 sm:px-6 md:px-16 py-16 md:py-24 relative overflow-hidden"
+      className="bg-bg-black flex flex-col justify-center px-4 sm:px-6 md:px-16 py-16 md:py-24 relative overflow-hidden"
     >
       {/* Background accents */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-gold/5 rounded-full blur-[100px] pointer-events-none" />

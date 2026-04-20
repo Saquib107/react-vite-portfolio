@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <section id="contact" className="snap-section w-full min-h-screen py-24 md:py-0 bg-bg-black flex flex-col items-center justify-center px-6 md:px-24 overflow-x-hidden relative">
+    <section id="contact" className="w-full py-16 md:py-24 bg-bg-black flex flex-col items-center justify-center px-6 md:px-24 overflow-x-hidden relative">
       {/* Background large text overlay */}
       <h1 className="hidden xl:block absolute text-[20vw] font-heading text-primary-beige/5 leading-none select-none pointer-events-none whitespace-nowrap">
         GET IN TOUCH

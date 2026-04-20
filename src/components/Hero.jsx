@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="snap-section relative min-h-screen w-full bg-[#0a0a0a] flex flex-col items-center justify-center overflow-hidden"
+      className="relative min-h-[100dvh] w-full bg-[#0a0a0a] flex flex-col overflow-hidden"
     >
       {/* ── Layer 1: BIG "PORTFOLIO" text BEHIND image — ultra-subtle fill ── */}
       <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex w-full justify-center pointer-events-none select-none">
@@ -21,14 +21,14 @@ const Hero = () => {
       </div>
 
       {/* ── Layer 2: Portrait image + radial dissolve blending ── */}
-      <div className="relative flex-1 flex items-end justify-center w-full z-20 pointer-events-none mt-16 md:mt-10">
+      <div className="absolute inset-x-0 bottom-0 top-[20%] flex items-end justify-center w-full z-20 pointer-events-none">
         <motion.img
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 1.5, ease: 'easeOut' }}
           src={heroImg}
           alt="Saquib Rayees"
-          className="h-[50vh] sm:h-[60vh] md:h-[75vh] w-[95%] md:w-auto object-contain object-bottom"
+          className="h-[60vh] md:h-[75vh] w-auto max-w-[95%] object-contain object-bottom"
           style={{
             maskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
             WebkitMaskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
@@ -63,7 +63,7 @@ const Hero = () => {
       </div>
 
       {/* ── Layer 4: Name, role, description, buttons at bottom ── */}
-      <div className="relative z-40 flex flex-col items-center w-full px-4 gap-2 md:gap-3 shrink-0 pb-12 sm:pb-16 mt-4">
+      <div className="absolute inset-x-0 bottom-0 z-40 flex flex-col items-center w-full px-4 gap-2 md:gap-3 pb-8 md:pb-12 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent pt-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

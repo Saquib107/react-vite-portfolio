@@ -11,7 +11,7 @@ const TableOfContents = () => {
   ];
 
   return (
-    <div className="w-full min-h-[100dvh] bg-bg-black flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 sm:px-10 md:px-20 py-16 sm:py-20 relative overflow-hidden gap-8 sm:gap-12 lg:gap-0">
+    <div className="w-full bg-bg-black flex flex-col lg:flex-row items-center justify-center lg:justify-between px-6 sm:px-10 md:px-20 py-16 sm:py-20 relative overflow-hidden gap-8 sm:gap-12 lg:gap-0">
       <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}

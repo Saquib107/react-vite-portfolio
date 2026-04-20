@@ -6,7 +6,7 @@ const About = () => {
   const [isPhotoColored, setIsPhotoColored] = useState(false);
 
   return (
-    <section id="about" className="snap-section relative w-full min-h-screen bg-bg-black flex flex-col md:flex-row items-center justify-center px-4 sm:px-10 md:px-24 py-16 md:py-24 overflow-hidden gap-8 md:gap-0">
+    <section id="about" className="relative w-full bg-bg-black flex flex-col md:flex-row items-center justify-center px-4 sm:px-10 md:px-24 py-16 md:py-24 overflow-hidden gap-8 md:gap-0">
 
       {/* Image Container */}
       <motion.div
@@ -92,10 +92,10 @@ const About = () => {
       </div>
 
       {/* Footer bar for the slide */}
-      <div className="hidden sm:block absolute bottom-6 md:bottom-10 left-6 md:left-24 z-30 opacity-50">
+      <div className="hidden md:block absolute bottom-6 md:bottom-10 left-6 md:left-24 z-30 opacity-50">
         <span className="text-primary-beige font-body text-[10px] uppercase tracking-widest">Saquib | Creative Developer</span>
       </div>
-      <div className="hidden sm:block absolute bottom-6 md:bottom-10 right-6 md:right-24 z-30 opacity-50 font-body text-[10px] uppercase tracking-widest">
+      <div className="hidden md:block absolute bottom-6 md:bottom-10 right-6 md:right-24 z-30 opacity-50 font-body text-[10px] uppercase tracking-widest">
         www.saquib.dev
       </div>
     </section>
