@@ -42,7 +42,7 @@ const ProjectSlide = ({ project, index }) => {
   const isEven = index % 2 === 0;
 
   return (
-    <section className="snap-section w-full min-h-screen py-24 md:py-0 bg-bg-black flex flex-col justify-center px-4 sm:px-6 md:px-20 border-b border-primary-beige/5 overflow-hidden relative">
+    <section className="w-full py-16 md:py-32 bg-bg-black flex flex-col justify-center px-4 sm:px-6 md:px-20 border-b border-primary-beige/5 relative">
       <div className={`flex flex-col md:flex-row items-center gap-6 md:gap-10 relative z-10 ${!isEven ? 'md:flex-row-reverse' : ''}`}>
 
         {/* TEXT CONTENT */}

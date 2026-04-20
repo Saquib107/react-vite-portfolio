@@ -21,17 +21,17 @@ const Hero = () => {
       </div>
 
       {/* ── Layer 2: Portrait image + radial dissolve blending ── */}
-      <div className="absolute inset-x-0 bottom-0 top-[20%] flex items-end justify-center w-full z-20 pointer-events-none">
+      <div className="absolute inset-0 z-20 flex items-end justify-center pointer-events-none">
         <motion.img
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 1.5, ease: 'easeOut' }}
           src={heroImg}
           alt="Saquib Rayees"
-          className="h-[60vh] md:h-[75vh] w-auto max-w-[95%] object-contain object-bottom"
+          className="h-[75vh] sm:h-[80vh] md:h-[90vh] w-auto max-w-[90%] object-contain object-bottom"
           style={{
-            maskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 55% 75% at 50% 55%, black 40%, transparent 100%)',
+            maskImage: 'radial-gradient(ellipse 70% 85% at 50% 65%, black 35%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 70% 85% at 50% 65%, black 35%, transparent 100%)',
             filter: 'brightness(0.90) contrast(1.05)',
           }}
         />
@@ -63,7 +63,7 @@ const Hero = () => {
       </div>
 
       {/* ── Layer 4: Name, role, description, buttons at bottom ── */}
-      <div className="absolute inset-x-0 bottom-0 z-40 flex flex-col items-center w-full px-4 gap-2 md:gap-3 pb-8 md:pb-12 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent pt-32">
+      <div className="absolute inset-x-0 bottom-0 z-[35] flex flex-col items-center w-full px-4 gap-2 md:gap-3 pb-8 md:pb-16 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent pt-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

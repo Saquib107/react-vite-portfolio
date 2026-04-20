@@ -116,7 +116,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-            className="fixed inset-0 z-40 bg-bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center min-h-screen"
+            className="fixed inset-0 z-[55] bg-bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center min-h-screen"
           >
             <ul className="flex flex-col items-center gap-8 w-full px-6">
               {navLinks.map((link) => (
