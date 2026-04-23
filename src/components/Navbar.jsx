@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import resumePDF from '../assets/Saquib_Rayees_Resume (1).pdf';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,8 +89,8 @@ const Navbar = () => {
             ))}
           </ul>
           <a
-            href="/cv.pdf"
-            download="Saquib_CV.pdf"
+            href={resumePDF}
+            download="Saquib_Rayees_Resume.pdf"
             className="border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-bg-black font-body text-[10px] uppercase tracking-widest px-6 py-2 rounded-full transition-all duration-300"
           >
             Download CV
@@ -142,8 +143,8 @@ const Navbar = () => {
                 className="w-full text-center mt-4"
               >
                 <a
-                  href="/cv.pdf"
-                  download="Saquib_CV.pdf"
+                  href={resumePDF}
+                  download="Saquib_Rayees_Resume.pdf"
                   className="inline-block border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-bg-black font-body text-xs uppercase tracking-widest px-8 py-3 rounded-full transition-all duration-300"
                 >
                   Download CV

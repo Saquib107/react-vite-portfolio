@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import aboutImg from '../assets/about-me.jpg';
+import resumePDF from '../assets/Saquib_Rayees_Resume (1).pdf';
 
 const About = () => {
   const [isPhotoColored, setIsPhotoColored] = useState(false);
@@ -57,8 +58,8 @@ const About = () => {
             </p>
             <div className="pt-2">
               <a
-                href="/cv.pdf"
-                download="Saquib_CV.pdf"
+                href={resumePDF}
+                download="Saquib_Rayees_Resume.pdf"
                 className="inline-flex w-full sm:w-auto justify-center border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-bg-black font-body text-[10px] uppercase tracking-widest px-6 py-3 rounded-full transition-all duration-300"
               >
                 Download CV
